@@ -1,0 +1,250 @@
+/* =========================================
+   基础设置与马卡龙配色
+   ========================================= */
+:root {
+  --bg-color: #fdfbf7;          /* 背景色：暖暖的米白 */
+  --text-color: #5d5d5d;        /* 文字：柔和的深灰 */
+  --mint: #a8e6cf;              /* 薄荷绿 */
+  --pink: #ffd3b6;              /* 蜜桃粉 */
+  --purple: #d4a5a5;            /* 香芋紫 */
+  --blue: #b5e2fa;              /* 天空蓝 */
+  --yellow: #fff1b9;            /* 奶油黄 */
+  --border-color: #e5e0d8;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 阴影让卡片浮起来 */
+}
+
+/* 全局应用手写体和背景 */
+body {
+  font-family: 'Comic Sans MS', 'Ma Shan Zheng', 'Microsoft YaHei', sans-serif; /* 手写风备选 */
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 20px;
+}
+
+/* =========================================
+   顶部栏样式
+   ========================================= */
+.top-bar {
+  display: flex; /* 让标题和按钮左右排开 */
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+
+.top-bar h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+#add-btn {
+  background-color: var(--mint);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s; /* 动画过渡 */
+}
+
+#add-btn:hover {
+  transform: scale(1.05); /* 鼠标悬停放大一点点 */
+}
+
+/* =========================================
+   课表网格样式
+   ========================================= */
+.timetable-container {
+  background: white;
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: var(--shadow);
+  overflow-x: auto; /* 手机端支持滑动 */
+}
+
+.timetable {
+  width: 100%;
+  border-collapse: collapse; /* 让格子边框合并，更像表格 */
+  table-layout: fixed; /* 强制平均分配宽度 */
+}
+
+.timetable th, .timetable td {
+  border: 1px dashed var(--border-color);
+  text-align: center;
+  vertical-align: top;
+  padding: 8px;
+  height: 70px; /* 每格高度 */
+}
+
+.timetable th {
+  background-color: #faf6f0;
+  font-size: 15px;
+  padding: 10px;
+}
+
+/* 左侧时间列 */
+.time-col {
+  width: 80px;
+  font-size: 14px;
+  color: #888;
+  background-color: #fafafa !important;
+}
+
+.time-col small {
+  font-size: 10px;
+  color: #aaa;
+}
+
+/* =========================================
+   弹窗样式（最关键：默认隐藏）
+   ========================================= */
+.hidden {
+  display: none !important; /* 魔法：直接隐藏 */
+}
+
+.modal {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* 半透明黑底 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: rgb(125, 167, 193);
+  padding: 25px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 8px 24px rgba(8, 85, 54, 0.15);
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.modal-content label {
+  display: block;
+  margin: 12px 0;
+  font-size: 15px;
+}
+
+.modal-content input[type="text"], 
+.modal-content select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box; /* 让输入框不超出边界 */
+  font-family: inherit;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.modal-buttons button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#cancel-btn { background: #e0e0e0; }
+.modal-buttons button[type="submit"] { background: var(--mint); }
+/* =========================================
+   事件色块的样式
+   ========================================= */
+.event-block {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  padding: 4px;
+  box-sizing: border-box;
+  font-size: 12px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.1s;
+  color: #1b4735;
+}
+
+.event-block:hover {
+  transform: scale(1.02); /* 鼠标放上去微微放大 */
+}
+
+.event-block.solid {
+ background-color: transparent;
+  color: #786142;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.event-block.dashed {
+  background-color: #fff;
+  border: 2px dashed var(--purple); /* 虚线颜色 */
+  color: #7b5050;
+}
+
+.event-title {
+  font-weight: bold;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+
+.event-loc {
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+/* =========================================
+   手机端适配
+   ========================================= */
+@media (max-width: 768px) {
+  /* 当屏幕小于768px时触发 */
+  .timetable {
+    min-width: 600px; /* 强制表格最小宽度，超出屏幕就会出现左右滑动条 */
+  }
+  
+  .top-bar {
+    flex-direction: column; /* 标题和按钮变成上下排列 */
+    gap: 10px;
+  }
+  
+  .modal-content {
+    width: 95%; /* 弹窗在手机上占满屏幕 */
+    padding: 15px;
+  }
+}
+
+.top-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.icon-btn {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.icon-btn:hover {
+  background-color: #e0e0e0;
+}

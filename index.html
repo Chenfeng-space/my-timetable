@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feng的专属课表</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 1. 顶部导航栏 -->
+  <header class="top-bar">
+    <h1>🌸 Feng的专属课表</h1>
+    
+    <!-- 把所有按钮统一放在右边 -->
+    <div class="top-actions">
+      <button id="export-btn" class="icon-btn">导出</button>
+      <button id="import-btn" class="icon-btn">导入</button>
+      <button id="add-btn">+ 添加事件</button>
+    </div>
+  </header>
+
+  <!-- 隐藏的文件上传框，放在哪里都行，只要别放进表单里 -->
+  <input type="file" id="file-input" accept=".json" style="display: none;"> 
+
+  <!-- 2. 课表容器 -->
+  <div class="timetable-container">
+    <table class="timetable">
+      <thead>
+        <tr>
+          <th class="time-col">节次</th>
+          <th>周一</th><th>周二</th><th>周三</th><th>周四</th><th>周五</th><th>周六</th><th>周日</th>
+        </tr>
+      </thead>
+      <tbody id="timetable-body"></tbody>
+    </table>
+  </div>
+
+  <!-- 3. 弹窗 -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>添加/编辑事件</h2>
+      
+      <form id="event-form">
+        <input type="hidden" id="event-id" value="">
+
+        <label>事件名称：<input type="text" id="event-title" required></label>
+        
+        <label>星期：
+          <select id="event-day">
+            <option value="1">周一</option><option value="2">周二</option><option value="3">周三</option><option value="4">周四</option><option value="5">周五</option><option value="6">周六</option><option value="7">周日</option>
+          </select>
+        </label>
+
+        <label>开始节次：
+          <select id="event-start">
+            <option value="1">第1节 (08:30)</option><option value="2">第2节 (09:20)</option><option value="3">第3节 (10:20)</option><option value="4">第4节 (11:10)</option><option value="5">第5节 (14:00)</option><option value="6">第6节 (14:50)</option><option value="7">第7节 (15:40)</option><option value="8">第8节 (16:30)</option><option value="9">第9节 (19:00)</option><option value="10">第10节 (19:50)</option>
+          </select>
+        </label>
+
+        <label>持续节数：
+          <select id="event-duration">
+            <option value="1">1节</option><option value="2" selected>2节</option><option value="3">3节</option><option value="4">4节</option>
+          </select>
+        </label>
+
+        <label>地点：<input type="text" id="event-location" placeholder="如：教学楼A101"></label>
+
+        <label>分类颜色：
+          <select id="event-color">
+            <option value="#d4a5a5">香芋紫 (学习)</option>
+            <option value="#ffd3b6">蜜桃粉 (生活)</option>
+            <option value="#b5e2fa">天空蓝 (社团)</option>
+            <option value="#fff1b9">奶油黄 (其他)</option>
+          </select>
+        </label>
+        
+        <label>是否每周重复：
+          <input type="checkbox" id="event-repeat" checked> 是
+        </label>
+
+        <div class="modal-buttons">
+          <button type="button" id="delete-btn" style="display: none; background-color: #ffb3b3;">删除</button>
+          <button type="button" id="cancel-btn">取消</button>
+          <button type="submit">保存</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+     <script src="script.js"></script>
+</body>
+</html>
